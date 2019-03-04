@@ -1,0 +1,445 @@
+
+<!doctype html>
+
+<html>
+
+<head>
+{% load staticfiles %}
+<meta charset="utf-8">
+
+<title>书籍详情 - 绿色书屋</title>
+
+<link href="{% static 'css/shopdetail.css' %}" rel="stylesheet" type="text/css">
+
+<script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+
+<script src="{% static 'js/common.js' %}"></script>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+	  var showproduct = {
+
+		  "boxid":"showbox",
+
+		  "sumid":"showsum",
+
+		  "boxw":400,
+
+		  "boxh":550,
+
+		  "sumw":60,//列表每个宽度,该版本中请把宽高填写成一样
+
+		  "sumh":60,//列表每个高度,该版本中请把宽高填写成一样
+
+		  "sumi":7,//列表间隔
+
+		  "sums":5,//列表显示个数
+
+		  "sumsel":"sel",
+
+		  "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+
+		  "lastid":"showlast",
+
+		  "nextid":"shownext"
+
+		  };//参数定义
+
+	 $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+
+	 $(function(){
+
+
+
+		$('.tabs a').click(function(){
+
+
+
+			var $this=$(this);
+
+			$('.panel').hide();
+
+			$('.tabs a.active').removeClass('active');
+
+			$this.addClass('active').blur();
+
+			var panel=$this.attr("href");
+
+			$(panel).show();
+
+			return fasle;  //告诉浏览器  不要纸箱这个链接
+
+			})//end click
+
+
+
+
+
+			$(".tabs li:first a").click()   //web 浏览器，单击第一个标签吧
+
+		})//end ready
+
+		$(".centerbox li").click(function(){
+
+			$("li").removeClass("now");
+
+			$(this).addClass("now")
+
+			});
+});
+
+</script>
+
+</head>
+
+<body>
+
+<!-- 书籍下方滚动条 -->
+<div class="shopdetails">
+
+	<div id="leftbox">
+
+	<div id="showbox">
+
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+        <img  src="/media/{{ book.book_image }}" width="400" height="550" />
+
+
+	</div><!--展示图片盒子-->
+
+		<div id="showsum"></div><!--展示图片里边-->
+
+		<p class="showpage">
+
+ 		 <a href="javascript:void(0);" id="showlast"> < </a>
+
+  		 <a href="javascript:void(0);" id="shownext"> > </a>
+
+		</p>
+
+
+
+	</div>
+
+
+
+<!-- 书籍信息全部要动态获取 -->
+
+    <div class="centerbox">
+
+    	<h1 class="imgname">{{ book.name }}</h1>
+    	<h2 style="font-weight: 400">
+    	     <span class="head_title_name" title="{{ book.description }}">
+                 {{ book.description }}
+             </span>
+
+    	<span class="hot" title="{{ book.description }}">
+    		<a >绿色书屋良心推荐，更多书籍请点击</a>
+        </span>
+    	</h2>
+    	<br/><hr/>
+<div class="messbox_info">
+
+</div>
+
+    	<p class="Aprice">原价：<samp>￥{{ book.old_price }}</samp></p>
+    	<p class="price">二手价：<samp>￥{{ book.price }}</samp></p>
+    	<p class="youhui">店铺优惠：<samp>购物满两件打八折</samp></p>
+        <p class="youhui">类别：<strong>{{ book.category }}</strong></p>
+        <p class="youhui">版本：<strong>{{ book.version }}</strong></p>
+        <p class="youhui">销量：<strong>{{ book.sale_volume }}</strong></p>
+        <p class="youhui">库存：<strong>{{ book.storage }}</strong></p>
+
+        <p class="客服">客服：<img src="{% static 'img/tell03.png' %}" style="padding-top: 20px"></p>
+        <ul>
+
+        <li class="kuanshi">款式：</li>
+
+        <li class="now shopimg"><a href="#" title="套装1"><img src="/media/{{ book.book_image }}" width="45"></a></li>
+
+        <li class="shopimg"><a href="#" title="套装2"><img src="/media/{{ book.book_image }}" width="45"></a></li>
+
+        <li class="shopimg"><a href="#" title="套装3"><img src="/media/{{ book.book_image }}" width="45"></a></li>
+
+        <li class="shopimg"><a href="#" title="套装4"><img src="/media/{{ book.book_image }}" width="45"></a></li>
+
+        </ul>
+
+        <div class="clear"></div>
+
+
+
+        <p class="buy"><a href="{% url 'shopstore:add_into' book.ISBN %}" id="firstbuy"> 加入购物车</a><a>去购物车结算</a> </p>
+
+   		<div class="clear"></div>
+
+    </div>
+
+
+
+
+   <div class="rightbox">
+
+    	<p class="name">——热卖商品</p>
+
+    	<img src="{% static 'img/c1.jpg' %}" width="130" height="180">
+
+		<p>￥58元</p>
+
+
+    	<img src="{% static 'img/c2.jpg' %}" width="130" height="180">
+
+		<p>￥58元</p>
+
+
+    	<img src="{% static 'img/c3.jpg' %}" width="130" height="180">
+
+		<p>￥58元</p>
+
+    </div>
+
+
+
+</div>
+
+
+
+<div class="evaluate">
+
+
+
+	<div class="classify">
+
+    	<div class="shopim">
+
+        	<p class="name">绿色书屋自营<img src="{% static 'img/tell01.png' %}" width="22" height="22"></p>
+
+       		 <img src="{% static 'img/tellbottom.png' %}">
+
+       		 <p class="sc"><a href="#">收藏店铺</a></p>
+
+             <p class="sc"><a href="#">进入店铺</a></p>
+
+	  <div class="search">
+
+			<input class="left" type="text" />
+
+			<input class="right" type="button" style=" cursor:pointer;" value=""/>
+
+   		    </div>
+
+        </div>
+
+        <div class="shopfl">
+
+        	<p class="name">本店分类</p>
+
+        	<ul>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">全部书籍</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">教辅书籍</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">考研书籍</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">特色小说</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">特色小说</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">名人名著</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">外国名著</a></li>
+
+            <li><a href="#"><img src="{% static 'img/tell02.png' %}" width="10" height="10">世界名著</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="shopsee">
+
+        	<p class="name">看了又看</p>
+
+        	<a href="#" class="ex01">
+
+				<img src="{% static 'img/c1.jpg' %}" width="170" height="245">
+
+				<p>无声告白</p>
+
+				<p>商城价:18元</p>
+
+			</a>
+
+			<a href="#" class="ex01">
+
+				<img src="{% static 'img/c2.jpg' %}" width="170" height="245">
+
+				<p>受戒</p>
+
+				<p>商城价:￥24元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c3.jpg' %}" width="170" height="245">
+
+				<p>谈判官</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c1.jpg' %}" width="170" height="245">
+
+				<p>无声告白</p>
+
+				<p>商城价:￥15元</p>
+
+			</a>
+
+			<a href="#" class="ex01">
+
+				<img src="{% static 'img/c2.jpg' %}" width="170" height="245">
+
+				<p>受戒</p>
+
+				<p>商城价:￥17元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c3.jpg' %}" width="170" height="245">
+
+				<p>谈判官</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c1.jpg' %}" width="170" height="245">
+
+				<p>无声告白</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c2.jpg' %}" width="170" height="245">
+
+				<p>受戒</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c3.jpg' %}" width="170" height="245">
+
+				<p>谈判官</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c1.jpg' %}" width="170" height="245">
+
+				<p>无声告白</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+            <a href="#" class="ex01">
+
+				<img src="{% static 'img/c2.jpg' %}" width="170" height="245">
+
+				<p>受戒</p>
+
+				<p>商城价:￥18元</p>
+
+			</a>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="tabbedPanels">
+
+    	<ul class="tabs">
+
+        	<li><a href="#panel01">商品详情</a></li>
+
+            <li><a href="#panel02" class="active">累计评价</a></li>
+
+        	<li><a href="#panel03">商品推荐</a></li>
+
+        </ul>
+
+
+
+     <div class="panelContainer">
+
+       	<div class="panel" id="panel01">
+
+        	<p class="sell">商品描述</p>
+
+            <p>创意造型 浓浓文艺气息 闲暇时光 与好友分享</p>
+
+            <p></p>
+
+            <p class="sell">整体款式</p>
+
+            <img src="{% static 'img/d1.jpg' %}">
+
+            <img src="{% static 'img/d2.jpg' %}">
+
+            <img src="{% static 'img/d3.jpg' %}">
+
+            <img src="{% static 'img/d4.jpg' %}">
+
+            <img src="{% static 'img/d5.jpg' %}">
+
+            <img src="{% static 'img/d6.jpg' %}">
+
+            <img src="{% static 'img/e1.jpg' %}">
+
+             <img src="{% static 'img/e2.jpg' %}">
+
+            <img src="{% static 'img/e3.jpg' %}">
+
+
+
+            <img src="{% static 'img/e5.jpg' %}">
+
+
+
+        	<div class="clear"></div>
+
+        </div>
+
+
+</body>
+
+</html>
+

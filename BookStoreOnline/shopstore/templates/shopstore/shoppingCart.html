@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>购物车 - 绿色书屋</title>
+
+    <link rel="stylesheet" href="{% static 'css/shoppingCart.css' %}"/>
+{#    <script type="text/javascript" src="{% static 'js/shoppingCart.js' %}"></script>#}
+    <script type="text/javascript" src="{% static 'js/shoppingCart.js' %}"></script>
+</head>
+<body>
+{% include 'navigate.html' %}
+<center>
+<form id="cartForm" action="{% url 'shopstore:order_confirm' request.session.user_name  %}" method="post">
+{% csrf_token %}
+<table id="cartTable">
+    <thead>
+        <tr>
+            <th><input class="check-all check" type="checkbox" name="checkall"/>&nbsp;全选</th>
+            <th>商品</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in user_cart %}
+        <tr>
+
+            <td class="mycheckbox" ><input class="check" type="checkbox" name="checkbox_list" value="{{ item.book.name }}"></td>
+            <td class="goods" id="goods"><img src="/media/{{ item.book.book_image }}" alt="" /><span>{{ item.book.name }}</span></td>
+            <td class="price">{{ item.book.price }}</td>
+            <td class="count">
+                <span class="reduce">-</span>
+                <input class="count-input" type="text" value="{{ item.count }}" name="counts" />
+                <span class="add">+</span></td>
+            <td class="subtotal" >{% widthratio item.book.price  1  item.count  %}</td>
+            <td class="operation"><span class="delete">删除</span></td>
+        </tr>
+    {% empty %}
+        <a href="{% url 'shopstore:index' %}"><p>购物车是空的，赶紧去添加点东西吧！</p></a>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="foot" id="foot">
+    <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;全选</label>
+    <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
+    <div class="fr closing" ><button  id="cartSub" type="submit" name="settle">结算</button></div>
+    <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+    <div class="fr selected" id="selected">已选商品
+         <span id="selectedTotal">0</span>件
+        <span class="arrow up">︽</span>
+        <span class="arrow down">︾</span>
+    </div>
+    <div class="selected-view">
+        <div id="selectedViewList" class="clearfix">
+            <!--<div><img src="img/shoppingCar1.jpg"><span>取消选择</span></div>-->
+        </div>
+        <span class="arrow">◆<span>◆</span></span>
+    </div>
+
+</div>
+</form>
+</center>
+</body>
+{% include 'bottom.html' %}
+</html>

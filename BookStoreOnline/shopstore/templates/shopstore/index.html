@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    {% include 'navigate.html' %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache" />
+	<title>主页 - 绿色书屋</title>
+</head>
+<body>
+
+<div class="search">
+	<img class="logoI" src="{% static 'img/logo.jpg' %}">
+	<div class="logoIS">
+		<form class="form" method="post" action="{% url 'shopstore:search_result' %}">
+            {% csrf_token %}
+	        <input class="searchInput" type="text" placeholder="请输入想要查找的商品" name="keyword">
+	    </form>
+	</div> 
+</div>
+<!-- 内容 -->
+<div class="content">
+<!-- 左侧 -->
+	<div class="left_column">
+	<!-- 左侧菜单 -->
+		<ul class="left_menu">
+			<li class="left_menu_mini" id="one">书屋自营<span class="mini_right"> ></span>
+				<div class="second_level">
+                    {% for i in category %}
+					<div class="second_level_mini">{{ i }}</div>
+                    {% endfor %}
+				</div>
+			</li>
+			<li class="left_menu_mini" id="two">教科书<span class="mini_right"> ></span>
+				<div class="second_level">
+					<div class="second_level_mini">数学类</div>
+					<div class="second_level_mini">英语类</div>
+					<div class="second_level_mini">管理类</div>
+					<div class="second_level_mini">计算机类</div>
+				</div>
+			</li>
+			<li class="left_menu_mini" id="three">数学</li>
+			<li class="left_menu_mini" id="four">计算机</li>
+			<li class="left_menu_mini" id="five">英语</li>
+			<li class="left_menu_mini" id="six">金融</li>
+			<li class="left_menu_mini" id="seven">管理</li>
+		</ul>
+		<!-- ui广告 -->
+		<a href="#" class="ad" style="background:url('/static/img/ad_ui.png')">
+		</a>
+		<!-- 优设推荐 -->
+		<div class="lef_tag">
+			<div class="lef_tag_title">
+				<div class="lef_tag_title_main">优设推荐</div>
+			</div>
+			<div class="lef_tag_main">
+				<div class="lef_tag_main_mini_two">
+					<img class="bookpic" src="{% static 'img/book1.jpg' %}">
+					<div class="textofbook">
+						<div class="tit">史上最全的设计师图书目录</div>
+						<div class="tex"><strong>推荐：</strong>精彩图书，一网打尽！</div>
+					</div>
+				</div>
+				<div class="lef_tag_main_mini_two">
+					<img class="bookpic" src="{% static 'img/book2.png' %}">
+					<div class="textofbook">
+						<div class="tit">WEB开发基础新手实战手册</div>
+						<div class="tex"><strong>推荐：</strong>学做你的第一个响应式网站</div>
+					</div>
+				</div>
+				<div class="lef_tag_main_mini_two">
+					<img class="bookpic" src="{% static 'img/book3.png' %}">
+					<div class="textofbook">
+						<div class="tit">设计师专属服饰</div>
+						<div class="tex"><strong>推荐：</strong>指点江山系列，棉中极品</div>
+					</div>
+				</div>
+				<div class="lef_tag_main_mini_two">
+					<img class="bookpic" src="{% static 'img/book4.png' %}">
+					<div class="textofbook">
+						<div class="tit">拍出明星范</div>
+						<div class="tex"><strong>推荐：</strong>PS商业人像摄影实战圣经</div>
+					</div>
+				</div>
+				<div class="lef_tag_main_mini_two">
+					<img class="bookpic" src="{% static 'img/book5.png' %}">
+					<div class="textofbook">
+						<div class="tit">设计最想听的电台，每天8分钟</div>
+						<div class="tex"><strong>推荐：</strong>可以听的设计技巧和职场秘籍</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 美橙广告 -->
+		<a href="#" class="ad" style="background:url('/static/img/ad_meicheng.jpg')"></a>
+		<!-- 公开课广告 -->
+		<a href="#" class="ad" style="background:url('/static/img/ad_gongkaike.png')"></a>
+	</div>
+	<!-- 右边栏目 -->
+	<div class="right_column">
+	<!-- 轮播 -->
+		<div class="loop">
+			<div class="loop_bigpic">
+				<div class="bigpic"><img src="{% static 'img/1.jpg' %}"><div class="loop_text"><a>一号广告位长期招租</a></div></div>
+				<div class="bigpic"><img src="{% static 'img/2.jpg' %}"><div class="loop_text"><a>二号广告位长期招租</a></div></div>
+				<div class="bigpic"><img src="{% static 'img/3.jpg' %}"><div class="loop_text"><a>三号广告位长期招租</a></div></div>
+				<div class="bigpic"><img src="{% static 'img/4.jpg' %}"><div class="loop_text"><a>四号广告位长期招租</a></div></div>
+				<div class="bigpic"><img src="{% static 'img/5.jpg' %}"><div class="loop_text"><a>五号广告位长期招租</a></div></div>
+				<div class="bigpic"><img src="{% static 'img/6.jpg' %}"><div class="loop_text"><a>六号广告位长期招租</a></div></div>
+				<div class="lef">←</div>
+				<div class="rig">→</div>
+			</div>
+			<div class="loop_minipic">
+				<div class="loop_minipic_small" id="loop_minipic_small"><img src="{% static 'img/1.jpg' %}"></div>
+				<div class="loop_minipic_small" id="loop_minipic_small"><img src="{% static 'img/2.jpg' %}"></div>
+				<div class="loop_minipic_small" id="loop_minipic_small"><img src="{% static 'img/3.jpg' %}"></div>
+				<div class="loop_minipic_small" id="loop_minipic_small"><img src="{% static 'img/4.jpg' %}"></div>
+				<div class="loop_minipic_small" id="loop_minipic_small"><img src="{% static 'img/5.jpg' %}"></div>
+				<div class="loop_minipic_small" id="loop_minipic_small1"><img src="{% static 'img/6.jpg' %}"></div>
+			</div>
+		</div>
+		<!-- 轮播下的栏目 ：图书展示-->>
+    {% if length  %}
+        <p>共有{{ length }}条记录...</p>
+    {% endif %}
+    {% if length is 0  %}
+        <p>共有{{ length }}条记录...</p>
+    {% endif %}
+        {% for book in book_list %}
+            <a href="{% url 'shopstore:books' book.ISBN %}">
+				<div class="lef_tag_main_mini_two libook">
+					<img class="bookpic showbook" src="/media/{{ book.book_image }}">
+					<div class="textofbook libookInf">
+						<div class="tit"><a href="{% url 'shopstore:books' book.ISBN %}">{{ book }}</a></div>
+						<div class="tex">新旧程度：八新</div>
+						<div class="tex">价格：<p class="newP">￥{{ book.price }}&nbsp&nbsp&nbsp</p><p class="oldP">￥{{ book.old_price }}</p></div>
+					</div>
+				</div>
+			</a>
+        {% endfor %}
+    </div>
+</div>
+{% include 'bottom.html' %}
+</body>
+</html>

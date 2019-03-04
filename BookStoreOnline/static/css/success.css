@@ -1,0 +1,14 @@
+.successDiv{
+	width: 360px;
+	margin: 200px auto 0px auto;
+	padding: 10px;
+	border: 1px solid green;
+}
+.success{
+	font-size: 15px;
+}
+
+.success img{
+	width: 30px;
+	height: 30px;
+}

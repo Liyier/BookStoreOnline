@@ -1,0 +1,171 @@
+body {
+    padding: 20px;
+    color: #666;
+    width: 940px;
+    margin: 0px auto;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+p{
+	margin: 0;
+}
+td{
+	margin:0;
+	padding: 0;
+}
+button{
+	padding: 0;
+}
+.allAddress{
+	font-size: 12px;
+}
+.address{
+	width: 200px;
+	height: 80px;
+	border:2px solid #a6a6a6;
+	margin: 0 10px;
+	float: left;
+	padding-left: 10px;
+}
+.address:hover{
+	border:2px solid #00b33c;
+}
+.addressP{
+	height: 30px;
+	line-height:30px;
+}
+.addressD{
+	height: 30px;
+	line-height:30px;
+}
+.confirmation{
+	margin: 130px auto;
+}
+table{
+	border-collapse: collapse;
+}
+.conAllGoods{
+	text-align: center;
+    height: 30px;
+    width: 940px;
+	border-bottom: 2px solid #2eb82e;
+}
+.conAllGoods1{
+	text-align: center;
+    height: 30px;
+    width: 940px;
+	border-bottom: 2px solid #b8b894;
+}
+.conGoods{
+	width: 300px;
+}
+.conGoods img{
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+    float: left;
+}
+.conGoods span{
+	width: 80px;
+    margin: 20px 0px 0px 0px;
+    text-align: left;
+    float: left;
+}
+.conPrice{
+	width: 140px;
+}
+.conCount{
+	width: 120px;
+}
+.conProf{
+	width: 200px;
+}
+.conSum{
+	width: 120px;
+}
+.otherCon{
+	width: 940px;
+	background-color: #d6f5d6;
+}
+.other1{
+	width: 400px;
+}
+.other2{
+	width: 300px;
+}
+.other3{
+	width: 200px;
+}
+.other3 span{
+	color: red;
+	font-size: 20px;
+	font-style: bold;
+}
+.otherinput{
+	width: 300px;
+}
+.yunfei{
+	background-color: #70db70;
+}
+.otherCon tr{
+	height: 30px;
+	line-height: 30px;
+}
+.sub{
+	float: right;
+	width: 300px;
+	border: 1px solid grey;
+}
+.sub tr{
+	height: 32px;
+	line-height: 32px;
+}
+.sub td{
+	padding-left: 20px;
+}
+.sub span{
+	color: red;
+	font-size: 20px;
+}
+.subTr{
+	border-top: 1px solid grey;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+	border-left: 1px solid white;
+	text-align: center;
+}
+#cartTable{
+	width: 940px;
+}
+.subCart{
+	color: blue;
+}
+.subCart:hover{
+	color:red;
+}
+.subTd{
+	background-color: #ff704d;
+	color: white;
+	width: 150px;
+}
+.subTr td{
+	padding: 0px;
+}
+.subTd button{
+	width: 150px;
+	height: 30px;
+	background-color: #ff704d;
+	border:0;
+}
+.submitInf{
+	width: 200px;
+	height: 30px;
+	float: right;
+	margin-top: 300px;
+}
+.submitInf td{
+	height: 30px;
+	line-height: 30px;
+}
+
+

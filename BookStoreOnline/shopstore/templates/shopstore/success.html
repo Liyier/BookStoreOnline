@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/success.css' %}">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+	<title>支付成功 - 绿色书屋</title>
+</head>
+{% include 'navigate.html' %}
+<body>
+	<div class="successDiv">
+		<p class="success"><img src="{% static 'img/success.png' %}"> 订单编号{{ order_number }}已支付成功！，共消费{{ total }}</p>
+		<p>对方将立刻收到您的付款。</p>
+		<p>如果您有未付款信息。<a href="">查看并继续付款</a></p>
+		<p>您可能需要：&nbsp&nbsp<a href="">余额:{{ balance }}</a>&nbsp&nbsp <a href="">消费记录</a>&nbsp&nbsp<a href="">我要充值</a></p>
+		<p><strong>提醒</strong> ：请勿相信其他恶意诈骗短信</p>
+		
+		
+		
+
+	</div>
+</body>
+</html>
+{% include 'bottom.html' %}

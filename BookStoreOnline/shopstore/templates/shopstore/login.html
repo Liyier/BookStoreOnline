@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录-绿色书屋</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body background="/static/img/bg.jpg">
+<div>
+<center>
+	<br/><br/><br/>
+	<div style="background:white;width:400px ">
+	<form role="form"  style="width:300px" action="{% url 'shopstore:login' %}" method="post"><br/>
+        {%if message %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+        {% csrf_token %}
+	<h3>帐号密码登录</h3>
+	推荐使用<a>快速安全登录</a>，防止盗号。<br/><br/>
+		<div class="form-group">
+			<input class="form-control input-lg" type="text" placeholder="支持QQ号/邮箱/手机号登陆" name="username" required />
+		</div>
+		<div class="form-group">
+			<input class="form-control input-lg" type="password" placeholder="密码" name="password" required />
+		</div>
+        <div class="form-group">
+            {{  login_form.captcha.errors }}
+            {{ login_form.captcha.label_tag }}
+            {{ login_form.captcha }}
+        </div>
+		<div class="form-group">
+			<input class="form-control input-lg btn btn-sm " type="submit"  style="background:#85CE38;color: white;font-size: 16px;font-weight: bold" value="登陆" >
+		</div>
+		<br/>
+		<span><a>忘了密码？</a>|<a href="{% url 'shopstore:register' %}"> 注册新帐号</a> | <a href="{% url 'shopstore:leave_message' %}">意见反馈</a></span>
+	</form>
+	</div>
+	</center>
+</div>
+{% include 'bottom.html' %}
+</body>
+</html>

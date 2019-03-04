@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+	<title>收银台 - 绿色书屋</title>
+	<link href="{% static 'css/a.css' %}" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{%  include 'navigate.html' %}
+<body>
+<!--主要展示区  -->
+	<div class="logo_line">
+		<div class="w960">
+			<div class="logo">
+				<a href="{% url 'shopstore:index' %}"><img  style="height: 70px; width: 150px" src="{% static 'img/收银台.jpg' %}" alt=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="w960">
+
+<!-- 订单基本信息显示 支付金额、订单号、账户余额均需动态获取-->
+<div class="pay_price">
+			<span class="price">支付金额：<span id="amountStr" class="red" >¥{{ total }}</span></span>
+			<span><span class="name_c">订单号：  
+						<span><a  target="_blank">{{ order_number }}</a></span>
+			</span> <br/>
+			<span class="price">账户余额：<span id="amountStr" class="red" >¥{{ user.balance }}</span></span>
+			<form method="post" action="{% url 'shopstore:pay_success' order_number %}">
+                {% csrf_token %}
+				<label >支付密码：</label><input type="password" name="password" placeholder="用户密码"> <br />
+              	<button id="psdCommonSubmit"  class="btn btn_big" style="width: 60px;margin:0px ">确认</button>
+                {%if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
+			</form>
+</span></div>
+
+
+<!-- 常用支付方式显示 -->
+		<h2 style="margin: 16px">常用支付方式</h2>
+		<div class="pay_box">
+			<table class="payment_table" border="0" cellspacing="0" cellpadding="0">
+				<tbody><tr>
+					
+						
+							
+								<td><a href="javascript:void(0);" class="selPayType1 current" paytype="51"><img src="{% static 'img/zhifubao.gif' %}" title="支付宝" width="140" height="40"><span></span><span class="hot">推荐</span></a>
+									<p></p></td>
+							
+		
+							
+								<td><a href="javascript:void(0);" class="selPayType1" paytype="84"><img src="{% static 'img/weixin.gif' %}" title="微信支付" width="140" height="40"><span></span></a>
+									<p></p></td>
+							
+				
+							
+								<td><a href="javascript:void(0);" class="selPayType1" paytype="36"><img src="{% static 'img/kuaiqian.gif' %}" title="快钱" width="140" height="40"><span></span></a>
+									<p></p></td>
+					
+							
+								<td><a href="javascript:void(0);" class="selPayType1" paytype="12"><img src="{% static 'img/mayihb.gif' %}" title="花呗分期" width="140" height="40"><span></span></a>
+									<p></p></td>
+				
+				</tr>
+			</tbody></table>
+			<!--花呗分期选择-->
+			<div id="divAlipayhb" class="instalments" style="display: none;"></div>
+			<!--end/花呗分期选择-->
+			<a id="btnCommonSubmit" href="javascript:void(0);" class="btn btn_big">立即支付</a>
+			<input id="hidCommonPayType" type="hidden" value="51">
+		</div>
+
+
+<!-- 推荐扫码支付 -->
+		<div id="recommendDiv" class="pay_box" style="">
+			<h3>推荐扫码支付:</h3>
+			<div class="scan_code">
+				<img src="{% static 'img/pay.png' %}" />
+				<img class="scan" src="{% static 'img/scan.png' %}" alt="" width="27" height="27">
+				<div class="scan_text">
+					<span>打开手机支付宝</span><span>扫一扫继续付款</span>
+			    </div>
+		    </div>
+        </div>
+    </div>
+</body>
+{% include 'bottom.html' %}
+</html>
+
